@@ -6,7 +6,7 @@ function startServer({serverPort = process.env.SERVER_PORT}={}){
 
     try{
         
-        app.listen(5000,()=>
+        app.listen(process.env.PORT,()=>
         {
             logger.info({
                 level:'info',
