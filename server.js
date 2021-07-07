@@ -6,10 +6,7 @@ function startServer(){
 
     try{
         
-        app.listen(process.env.PORT,()=>
-        {
-            console.log('started')
-        })
+        app.listen(process.env.PORT,0.0.0.0)
     }
     catch(err)
     {
