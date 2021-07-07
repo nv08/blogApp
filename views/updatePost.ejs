@@ -1,0 +1,22 @@
+<div class="content">
+
+<form action = '/dashboard/updatePost/<%= data.post_id %>' method="POST">
+       
+    <label> title</label>
+    <textarea name='title' rows="2" cols="45" required> <%= data.title %> </textarea>
+    <br>
+
+    <label> content</label>
+    <textarea name="content" rows="10" cols="70" required><%= data.content %> 
+    </textarea>
+        
+    <br>
+
+    <input type="submit" value="UPDATE POST" >
+
+    <hr>
+    <a href='/dashboard'>
+        Back to dashboard
+    </a>
+</form>
+</div>

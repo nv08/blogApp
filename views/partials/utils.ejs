@@ -1,0 +1,21 @@
+<div class="utils">
+   
+    <div class="search-container">
+        <form action='/' method='POST'>
+        <input type="text" class="search-box" name='searchQueryAuthor' placeholder=" Search by Author Name">
+        <button class="search-button" type="submit" formaction="searchByAuthor">Go</button>
+      </div> 
+      
+    <div class="search-container">
+        <form action='/' method='POST'>
+        <input type="text" class="search-box" name='searchQueryKey' placeholder=" Search by keyword">
+        <button class="search-button" type="submit" formaction="searchByKey">Go</button>
+      </div>
+
+    <form method="POST" action="/">
+        <input type="radio" value="asc" name='order'> ascending
+        <input type="radio" value="desc" name='order' checked> descending
+        <input type="submit" style="width: 10%;" value="sort" formaction="sort" >
+    </form>
+     
+</div>

@@ -1,0 +1,39 @@
+<div class="form-container">
+    <div class="form-left">
+        
+        <div class="form-left-fields">
+            <h2 style="text-align: center;">
+                REGISTER
+            </h2>
+            
+           
+                <% if (messages.msg) { %>
+                    <h4 style="color: red;text-align: center;"><%= messages.msg %>  </h4>
+                <% } %>
+           
+            <form action="/register" method="POST">
+                <ol>
+                    <li>
+                        <input type="text" name="user" placeholder="enter your name" required>
+                    </li>
+                    <li>
+                        <input type="text" name="email" placeholder="enter your email" required>
+                    </li>
+                    <li>
+                        <input type="password" name="pass" placeholder="enter your password" required>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="isAuthor"> Author Account?
+                    </li>
+                </ol>
+                
+                
+                <input type="submit" value="Register">
+            </form>
+        </div>
+
+    </div>
+    <div class="form-right">
+        <img src='/register.png' height="55%">
+    </div>
+</div>

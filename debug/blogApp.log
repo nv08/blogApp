@@ -1,0 +1,86 @@
+{"level":"warn","message":"Error in initializing the server"}
+{"level":"warn","message":"Error in initializing the server"}
+{"level":"warn","message":"Error in initializing the server"}
+{"level":"warn","message":"Error in initializing the server"}
+{"level":"warn","message":"Error in initializing the server"}
+{"level":"warn","message":"Error in initializing the server"}
+{"level":"warn","message":"Error in initializing the server"}
+{"level":"warn","message":"Error in initializing the server"}
+{"level":"warn","message":"Error in initializing the server"}
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+{"level":"info","message":"Error in initializing the server"}
+{"level":"info","message":"Error in initializing the server"}
+{"level":"error","message":"Error in initializing the server"}
+{"message":"Error in initializing the server","level":"error"}
+{"level":"error","message":"Error in initializing the server"}
+undefined
+undefined
+error: Jul-07-2021 06:46:11: 	Error in initializing the server
+error: Jul-07-2021 06:46:32 : 	Error in initializing the server
+error : Jul-07-2021 06:46:36 : 	Error in initializing the server
+error : Jul-07-2021 06:46:41 : 
+error : 	Error in initializing the serverJul-07-2021 06:46:44 : 
+error : 	Error in initializing the server : Jul-07-2021 06:46:45 : 
+error : 	Error in initializing the server : Jul-07-2021 06:46:48 
+error : Jul-07-2021 06:47:08 : 	Error in initializing the server
+error: Jul-07-2021 06:47:32: 	Error in initializing the server
+info: Jul-07-2021 07:28:50: 	undefinedfailed to log in
+info: Jul-07-2021 07:29:39: 	undefinedfailed to log in
+info: Jul-07-2021 07:30:02: 	undefinedfailed to log in
+info: Jul-07-2021 07:30:21: 	undefinedfailed to log in
+info: Jul-07-2021 07:30:45: 	undefinedfailed to log in
+info: Jul-07-2021 07:31:22: 	undefinedfailed to log in
+info: Jul-07-2021 07:31:34: 	undefinedfailed to log in
+info: Jul-07-2021 07:31:41: 	undefinedfailed to log in
+info: Jul-07-2021 07:31:50: 	undefinedfailed to log in
+info: Jul-07-2021 07:44:54: 	undefinedfailed to log in
+info: Jul-07-2021 07:46:38: 	undefinedfailed to log in
+warn: Jul-07-2021 07:50:08: 	Invalid createPost request generated
+warn: Jul-07-2021 07:50:09: 	Invalid createPost request generated
+warn: Jul-07-2021 07:50:20: 	Invalid createPost request generated
+warn: Jul-07-2021 07:50:32: 	Invalid dashboard request generated
+warn: Jul-07-2021 07:51:15: 	Invalid dashboard request generated
+warn: Jul-07-2021 07:51:54: 	Invalid createPost request generated
+info: Jul-07-2021 07:59:17: 	+1 post created by nilay
+warn: Jul-07-2021 08:11:01: 	Invalid dashboard request generated
+info: Jul-07-2021 08:11:15: 	-1 post deleted by nilay
+info: Jul-07-2021 08:26:07: 	+1 post created by nilay
+info: Jul-07-2021 08:28:33: 	[object Object]
+info: Jul-07-2021 08:28:37: 	Server 
+info: Jul-07-2021 08:28:46: 	Server is being initialized on 
+info: Jul-07-2021 08:28:51: 	Server is being initialized on 3000
+info: Jul-07-2021 08:29:06: 	Server is being initialized on 3000
+info: Jul-07-2021 08:29:09: 	Server is being initialized on 3000
+info: Jul-07-2021 08:30:11: 	Server is being initialized on 3000
+info: Jul-07-2021 08:51:19: 	Server is being initialized on undefined
+info: Jul-07-2021 08:52:08: 	Server is being initialized on 3000
+info: Jul-07-2021 08:52:38: 	Server is being initialized on 3000
+info: Jul-07-2021 08:53:12: 	Server is being initialized on 3000
+info: Jul-07-2021 08:53:21: 	Server is being initialized on 3000
+info: Jul-07-2021 08:53:36: 	Server is being initialized on 3000
+info: Jul-07-2021 08:53:49: 	Server is being initialized on 3000
+info: Jul-07-2021 08:53:56: 	Server is being initialized on 3000
+info: Jul-07-2021 08:54:01: 	Server is being initialized on 3000
+info: Jul-07-2021 08:54:31: 	Server is being initialized on 3000
+info: Jul-07-2021 08:54:33: 	Server is being initialized on 3000
+info: Jul-07-2021 08:54:39: 	Server is being initialized on 3000
+info: Jul-07-2021 08:54:42: 	Server is being initialized on 3000
+info: Jul-07-2021 08:55:08: 	Server is being initialized on 3000
+info: Jul-07-2021 08:55:10: 	Server is being initialized on 3000
+info: Jul-07-2021 08:55:43: 	Server is being initialized on 3000
+info: Jul-07-2021 08:55:49: 	Server is being initialized on 3000
+info: Jul-07-2021 08:56:10: 	Server is being initialized on 3000
+info: Jul-07-2021 08:56:14: 	Server is being initialized on 3000
+info: Jul-07-2021 08:56:18: 	Server is being initialized on 3000
+info: Jul-07-2021 08:56:21: 	Server is being initialized on 3000
+info: Jul-07-2021 10:05:41: 	Server is being initialized on undefined
+info: Jul-07-2021 10:06:06: 	Server is being initialized on undefined
+info: Jul-07-2021 10:06:11: 	Server is being initialized on undefined
+info: Jul-07-2021 10:06:22: 	Server is being initialized on undefined
+info: Jul-07-2021 10:06:33: 	Server is being initialized on undefined
+info: Jul-07-2021 10:07:20: 	Server is being initialized on 3000

@@ -1,0 +1,42 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["orderByRelation"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model cred {
+  id         String   @id @db.VarChar(50)
+  session_id String   @db.VarChar(50)
+  name       String   @db.VarChar(100)
+  email      String   @db.VarChar(100)
+  password   String   @db.VarChar(255)
+  is_author  Boolean?
+}
+
+model test {
+  author String? @db.VarChar(50)
+  post   String? @db.VarChar(255)
+  tags   String? @db.VarChar(20)
+  id     Int     @id
+}
+
+model author {
+  id          String  @id @db.VarChar(50)
+  author_name String  @db.VarChar(100)
+  posts       posts[]
+}
+
+model posts {
+  post_id           String    @id @db.VarChar(50)
+  title             String    @db.VarChar(100)
+  content           String?
+  date              DateTime  @db.Timestamp(6)
+  author_id         String    @db.VarChar(50)
+  last_updated_by   String?   @db.VarChar(100)
+  last_updated_time DateTime? @db.Date
+  author            author    @relation(fields: [author_id], references: [id])
+}

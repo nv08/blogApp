@@ -1,0 +1,58 @@
+
+
+<%- include('../partials/utils.ejs')%> 
+
+<div class="post">
+
+
+<% data.forEach(post => { %>
+
+    <div class="title">
+        <div class="user-image">
+            <img src="/partials/user.png" height="50px" width="50px" >
+        </div>
+        
+        <div class="user-name">
+            <h3 style="margin: 0;">
+                <%= post.author.author_name %> 
+                
+            </h3>
+
+            <h5 style="margin: 0;">
+                <p style="text-align: right;"> <%= post.date.toLocaleString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                   
+                  });%> 
+                  </p>
+            </h5>
+
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="main-content">
+            <h3>
+                <a href='/post/<%= post.post_id %> '> <%= post.title %> </a>
+            </h3>
+            <h4>
+    
+                <p> <%= post.content.split(" ").splice(0,7).join(" ") %> &nbsp; 
+                    <a href='/post/<%= post.post_id %> '> (Read More) </a>
+                </p>
+                
+               
+            </h4>
+        </div>
+       
+      
+    </div>
+        
+        <hr>
+
+<% }); %> 
+
+</div>
+

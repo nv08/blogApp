@@ -1,0 +1,15 @@
+<h1>
+    <%- data %> 
+</h1>
+
+<a href= "/login"> Back To Login </a> &nbsp;
+
+
+<% if (name) { %>
+    
+    <a href='/dashboard'> Back to Dashboard</a>
+<% } else { %>
+
+    <a href="/"> Back to Home</a>
+
+<% } %>
