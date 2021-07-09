@@ -28,7 +28,20 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(router)
-startServer()
+try{
+
+    startServer()
+}
+catch(err)
+{
+    logger.error({
+        level:'error',
+        message:`Server Initialization Failed!`,
+        
+    })
+    throw err
+}
+
 
 
 

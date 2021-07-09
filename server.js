@@ -2,11 +2,20 @@ const express = require('express')
 const app = express()
 const logger = require('./logConfiguration')
 
-function startServer(){
+function startServer({serverPort = process.env.SERVER_PORT}={}){
 
     try{
         
-        app.listen(process.env.PORT,0.0.0.0)
+        app.listen(serverPort,()=>
+        {
+            logger.info({
+                level:'info',
+                message:`Server is being initialized on ${serverPort}`,
+                
+            })
+            console.log(`Server is being Initialized on ${serverPort}!`)
+            console.log(`Server Started on ${serverPort}`);
+        })
     }
     catch(err)
     {

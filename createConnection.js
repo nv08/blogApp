@@ -12,6 +12,11 @@ try{
     .catch(
         err=>
         {
+            logger.error({
+                level:'error',
+                message:`connection to DB Failed`,
+                
+            })
             throw err
         })
 

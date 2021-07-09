@@ -17,7 +17,7 @@ const verify = async(user,pass,done)=>{
         return done(null,userMatch)
     }
 
-    return done(null,false)
+    return done(null,false,{message:'invalid Credentials!!'})
 }
 
 const customFields = {
