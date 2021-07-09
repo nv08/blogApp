@@ -1,0 +1,43 @@
+<div class="bar">
+    <img src="/nv.png" height="8%" width="8%">
+    <div class="heading1">
+        <h1 class="logo-gradient">Blogs</h1>
+    </div>
+   
+    <div class="heading2">
+        <% if(request.isAuthenticated()) { %>
+            
+            <ul>
+                <li>
+                    <a href = '/dashboard'> Welcome <%= name %>  </a>
+                </li>
+
+                <% if(request.user.is_author) { %>
+                    
+                    <li>
+                        <a href='/createPost'>
+                            Create
+                        </a>
+                    </li>
+                <% } %>
+            <li>
+                <a href='/logout'> Logout</a>
+            </li>
+                 
+        <% } else { %>
+            <ul>
+                <li>
+                    <a href = '/'> Home </a>
+                </li>
+                <li>
+                    <a href='/login'> Sign In </a>
+                </li>
+                <li>
+                    <a href = '/register'> Sign Up </a>
+                </li>
+            </ul>
+        <% } %>
+                
+    </div>
+    
+</div>

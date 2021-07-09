@@ -1,0 +1,83 @@
+
+<div class="post" >
+<% data.forEach(post => { %>
+    
+        <div class="title">
+            <div class="user-image">
+                <img src="/partials/user.png" height="50px" width="50px" >
+            </div>
+            
+            <div class="user-name">
+                <h3 style="margin: 0;">
+                    <%= post.author.author_name %> 
+                    
+                </h3>
+    
+                <h5 style="margin: 0;">
+                    <p style="text-align: right;"> <%= post.date.toLocaleString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    })%>  
+                    </p>
+                   
+                      
+                </h5>
+    
+            </div>
+        </div>
+    
+        <div class="content">
+            <div class="main-content"  >
+                <h3>
+                    <a href='/post/<%= post.post_id %> '> <%= post.title %> </a>
+                </h3>
+                <h4 style="font-weight: 500;">
+        
+                    <p> <%= post.content.substr(0,50) %> &nbsp; 
+                        <a href='/post/<%= post.post_id %> '> (Read More) </a>
+                    </p>
+                </h4>
+                </div>
+        
+                    <% if (request.isAuthenticated() && request.user.is_author) { %>
+                        <div class="actions">
+                            <form action="/" method="GET">
+                                <input type="submit" class = "action-buttons" formaction="dashboard/postDelete/<%= post.post_id %>" value="DELETE" >
+                                <input type="submit" class = "action-buttons" formaction="dashboard/postUpdate/<%= post.post_id %>" value="UPDATE" >
+                            </form>
+                        </div>
+
+                    <% } %>
+                </h4>
+        
+            </div>
+            
+        
+        <hr>
+<% }); %> 
+                  
+</div>
+
+<div class="page">
+    <form action="/page" method="GET" >
+        <ul class="pageform">
+
+        </ul>
+    </form>
+</div>
+<script>
+    const ele  = document.querySelector('.pageform')
+    fetch('http://localhost:3000/total/page')
+    .then(res=>res.json())
+    .then(x=>
+            {
+                for (let index = 1; index <= x; index++) {
+                    ele.innerHTML+=`<li><a><button type="submit" name="number" value="${index}"> ${index} </button></a></li>`
+
+                }
+        })
+    
+</script>
+      

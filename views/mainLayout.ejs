@@ -4,305 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>
+        
+        NV Blogs
+
+    </title>
+    <link rel="icon" href="nv.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
-    <style>
-        body{
-            font-family: 'Otomanopee One', sans-serif;
-            font-size: small;
-        }
-        .bar{
-            
-            width:80%;
-            margin: auto;
-            display : flex;
-        }
-        .heading1{
-            display: flex;
-            width:50%;
-            align-items: center;
-        }
-        .heading2{
-            display: flex;
-           
-            width: 50%;
-            justify-content: flex-end;
-        }
-        ul{
-            list-style: none;
-        }
-        ul li {
-            display: inline;
-            padding: 10px;
-        }
-        span{
-            font-size: 30px;
-        }
-        .logo{
-            background: rgb(198, 193, 241);
-            height:25vh;
-            margin:auto;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            padding: 10px;
-            
-        }
-        .singlepost{
-            width: 50%;
-            margin:auto;
-        }
-        a{
-            text-decoration: none;
-            color: rgb(139, 134, 187)
-        }
-        .form-container{
-          
-            border-radius: 10px;
-            box-shadow: slateblue 2px 3px 15px 1px;
-            display: flex;
-            width:80%;
-            margin: 10px auto;
-        }
-        .form-left{
-            display: flex;
-            align-items: center;
-            flex-flow: column nowrap;
-            width: 50%;
-      
-        }
-        .form-left-fields{
-            display: flex;
-            flex-direction: column;
-            
-            width:80%;
-            margin: auto;
-        }
-        .form-right{
-            display: grid;
-            place-items: center;
-        }
-        input[type=email],[type=password],[type=text]{
-            display: flex;
-            box-shadow: slateblue 1px 1px 5px 1px;
-            border: slateblue;
-            border-radius: 10px;
-            background: transparent;
-            margin: 10px auto;
-            padding: 5px;
-            font-weight: 400;
-            width: 80%;
-  
-        }
-        
-        input[type=submit] {
-            
-            display: flex;
-            box-shadow: slateblue 1px 1px 5px 1px;
-            border: slateblue;
-            border-radius: 10px;
-            background: transparent;
-            margin: 10px auto;
-            padding: 5px;
-            width: 30%;
-            justify-content: center;
-        }
-        input[type=submit]:active{
-            transform: scale(0.8);
-        }
-        input[type=checkbox]{
-            display: inline;
-            box-shadow: slateblue 1px 1px 5px 1px;
-            border: slateblue;
-            margin: 10px 20px;
-            padding: 5px;
-            justify-content: flex-start;
-        }
-        .form-right{
-            width: 50%;
-            border-radius: 10px;
-
-        }
-        section{
-            width: 80%;
-            margin: 40px auto;
-            
-        }
-        ol li{
-            list-style: none;
-            padding: 2px;
-        }
-
-        .post{
-            
-            width:75%;
-            margin-top: 5%;
-        }
-
-        .title{
-            display: flex;
-            
-        }
-        .user-name{
-            display: flex;
-            flex-direction: column;
-            display: flex;
-            
-        }
-        .content{
-            display: flex;
-            margin-top: 2%;
-            justify-content: space-between;
-            
-        }
-        hr{
-            margin-bottom: 5%;
-            box-shadow: slateblue 1px 1px 3px 1px;
-            border: slateblue;
-        }
-        .last-update{
-            padding-bottom: 3%;
-            display: flex;
-            width: 30%;
-            align-items: flex-end;
-        }
-        .singlepost{
-            width: 60%;
-            box-shadow: slateblue 2px 2px 5px 1px;
-            border: slateblue 1px solid;
-            border-radius: 10px;
-        }
-        .single-title{
-            display: flex;
-            align-items: center;
-            background: rgb(0, 0, 0);
-            color: white;
-            flex-direction: column;
-            border-radius: 10px;
-        }
-
-        .search-container {
-            
-            width: 25%;
-            position: relative;
-            border-radius: 30px;
-            padding: 3px 50px 3px 10px;
-        }
-        
-        .search-box {
-        background-color: transparent;
-        outline: none;
-        height: 35px;
-        font-size: 15px;
-        border: 0;
-        width: 100%;
-
-        }
-
-        .search-button {
-            
-        position: absolute;
-        background-color: rgb(153, 152, 236);
-        border-radius: 50%;
-        border: 0;
-        top:18px;
-        right:45px;
-        color: #FFF;
-        width: 35px;
-        height: 35px;
-        outline: 0;
-    }
-    .search-button:active{
-        transform: scale(0.8);
-    }
-    .utils{
-        display: flex;
-        align-items: center;
-        box-shadow: slateblue 2px 2px 5px 1px;
-        border: slateblue 1px solid;
-        border-radius: 10px;
-        padding: 10px;
-        
-    }
-    .actions{
-        width: 25%;
-    }
-    input[type=submit].action-buttons{
-        
-        width: 90%;
-        border-radius: 10px;
-        padding: 10px;
-    }
-   
-    .logo-gradient{
-        background: -webkit-linear-gradient(rgb(240, 227, 44), rgb(177, 172, 172));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-   
-    textarea{
-        display: block;
-        box-sizing: border-box;
-        padding: 10px;
-        margin-top: 2%;
-        box-shadow: slateblue 2px 2px 5px 1px;
-        border: slateblue 1px solid;
-        border-radius: 10px; 
-    }
-    textarea:focus{
-        border: none;
-        background-color: transparent;
-        resize: none;
-        outline: none;
-    }
-    input:focus{
-        border: none;
-        background-color: transparent;
-        resize: none;
-        outline: none;
-    }
-
-        
-    </style>
+    <link href="/stylesheets/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="bar">
-            <img src="/nv.png" height="8%" width="8%">
-            <div class="heading1">
-                <h1 class="logo-gradient">Blogs</h1>
-            </div>
-           
-            <div class="heading2">
-                <ul>
-                    <li>
-                        <a href = '/'> Home </a>
-                    </li>
-                    <li>
-                        <a href='/login'> Sign In </a>
-                    </li>
-                    <li>
-                        <a href = '/register'> Sign Up </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <%- include('./partials/navBar.ejs') %> 
     </header>
 
     <div class="logo">
-        <h1 style="color: rgb(236, 227, 146);">
+        <h1 class="main-heading"style="">
             NV Blogs
         </h1>
-        <h2 style="color: rgb(236, 227, 146);">
+        <h1 class="main-heading sub">
             Share your Thoughts
-        </h2>
+        </h1>
     </div>
 
+    
     <section>
         <%- body %> 
         
     </section>
+
+    <footer>
+        <%- include('./partials/footer.ejs') %> 
+    </footer>
 </body>
 </html>

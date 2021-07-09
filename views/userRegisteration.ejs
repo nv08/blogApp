@@ -1,3 +1,4 @@
+
 <div class="form-container">
     <div class="form-left">
         
@@ -6,21 +7,25 @@
                 REGISTER
             </h2>
             
+                <div class="infos">
+                    <% if (messages.msg) { %>
+                        <h4 style="color: red;text-align: center;"><%= messages.msg %>  </h4>
+                    <% } %>
+                    
+                </div>
+               
            
-                <% if (messages.msg) { %>
-                    <h4 style="color: red;text-align: center;"><%= messages.msg %>  </h4>
-                <% } %>
-           
-            <form action="/register" method="POST">
+            <form action="/register" method="POST" onblur="event.preventDefault(); validate()" name="form">
                 <ol>
                     <li>
-                        <input type="text" name="user" placeholder="enter your name" required>
+                        <input type="text" name="user" placeholder="enter your name" required minlength="5">
                     </li>
                     <li>
-                        <input type="text" name="email" placeholder="enter your email" required>
-                    </li>
+                        <input type="text" name="email" placeholder="enter your email" required >
+                    </li> 
+                   
                     <li>
-                        <input type="password" name="pass" placeholder="enter your password" required>
+                        <input type="password" name="pass" placeholder="enter your password" required minlength="5" maxlength="16"> 
                     </li>
                     <li>
                         <input type="checkbox" name="isAuthor"> Author Account?
@@ -28,7 +33,7 @@
                 </ol>
                 
                 
-                <input type="submit" value="Register">
+                <input type="submit" value="REGISTER" name="submit" >
             </form>
         </div>
 
@@ -37,3 +42,5 @@
         <img src='/register.png' height="55%">
     </div>
 </div>
+
+

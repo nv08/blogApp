@@ -1,3 +1,6 @@
+<% if (messages.msg) { %>
+    <h4 style="color: rgb(40, 82, 6);text-align: center;"><%= messages.msg %>  </h4>
+<% } %>
 <div class="content">
 
 <form action = '/dashboard/updatePost/<%= data.post_id %>' method="POST">

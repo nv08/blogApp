@@ -1,4 +1,4 @@
-<div class="utils">
+<!-- <div class="utils">
    
     <div class="search-container">
         <form action='/' method='POST'>
@@ -18,4 +18,37 @@
         <input type="submit" style="width: 10%;" value="sort" formaction="sort" >
     </form>
      
+</div> -->
+
+
+<div class="utils">
+   
+  <div class="search-container">
+      <form method="GET" action='/filters'>
+        <select name="searchQueryAuthor">
+          <option value=''> --Select an Author-- </option>
+        </select>
+    
+    </div> 
+    
+  <div class="search-container">
+      <input type="text" class="search-box" name='searchQueryKey' placeholder=" Search by keyword">
+    </div>
+
+    <input type="radio" value="asc" name='order'> ascending
+    <input type="radio" value="desc" name='order'> descending
+    <input type="submit" style="width: 10%;" value="apply" >
+  </form>
+   
 </div>
+
+<script>
+  const select = document.querySelector('select')
+  
+  const authors = fetch(`http://localhost:3000/all/authors`)
+                  .then(res=>res.json())
+                  .then(x=>x.forEach(element => {
+                    select.innerHTML+=`<option value="${element.author_name}"> ${element.author_name} </option>`
+                  }))
+ 
+</script>

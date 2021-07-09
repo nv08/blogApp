@@ -1,24 +1,25 @@
-
+<% if (messages.msg) { %>
+    <h4 style="color: rgb(40, 82, 6);text-align: center;"><%= messages.msg %>  </h4>
+<% } %>
 <div class="singlepost">
     <div class="single-title">
         <p>
-            <img src='/partials/user.png' height="50px" width="50px" style="vertical-align: middle;">
+            <img src='/partials/user.png' height="50px" width="50px" >
             <%= singlePost.author.author_name %> 
         </p>
-        <h3>
+        <h2>
             <%= singlePost.title %> 
-        </h3>
+        </h2>
         
     </div>
    
     <div class="title" style="justify-content: center;">
-        <p style="text-align: center; word-break: break-all;">
+        <p style="padding:5%;text-align: left;word-break: break-all; font-size: medium; white-space:pre-line ;">
             <%= singlePost.content %> 
         </p>
         
     </div>
 
-     
 </div>
 <h4 style="text-align: center;">
     <% if (name) { %>

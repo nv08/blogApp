@@ -1,3 +1,10 @@
 
+<%- include('./partials/utils.ejs')%> 
 
-<%- include('./partials/allPostRenderAuthor.ejs')%> 
+<% if (messages.msg) { %>
+    <h4 style="color: rgb(40, 82, 6);text-align: center;"><%= messages.msg %>  </h4>
+<% } %>
+
+<%- include('./partials/postBody.ejs') %>
+       
+</div>

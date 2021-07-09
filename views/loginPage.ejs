@@ -1,5 +1,5 @@
-<% if (messages.msg) { %>
-    <h4 style="color: rgb(40, 82, 6);text-align: center;"><%= messages.msg %>  </h4>
+<% if (messages) { %>
+    <h3 style="color: rgb(207, 65, 40);text-align: center;"><%= messages.msg %>  </h3>
 <% } %>
 <div class="form-container">
    
@@ -19,7 +19,7 @@
                         <input type="text" name="email" placeholder="enter your email" required>
                     </li>
                     <li>
-                        <input type="password" name="pass" placeholder="enter your password" required>
+                        <input type="password" name="pass" placeholder="enter your password" required minlength="5">
                     </li>
                     <li>
                         <input type="submit" value="LOGIN">
