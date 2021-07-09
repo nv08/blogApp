@@ -19,13 +19,16 @@ router.get('/',async(req,res)=>{
     })
     
     res.render('welcomePage',{
-        data : post
+        data : post,
+        request:req
     })
 })
 
 router.get('/register',(req,res)=>{
 
-    res.render('userRegisteration')
+    res.render('userRegisteration',{
+        request:req
+    })
 })
 
 router.post('/register',async(req,res)=>{
@@ -41,13 +44,17 @@ router.post('/register',async(req,res)=>{
             message:`${res.statusCode}: ${res.statusMessage}`,
             
         })
-        throw err
+        req.flash('msg',"Please Try Again")
+        res.redirect('/register')
+
     })
     
     if(userinDB) {
         
         req.flash('msg',"Email Already Exists!!");
-        res.render('userRegisteration')
+        res.render('userRegisteration',{
+            request:req
+        })
     }
     
     else{
@@ -79,7 +86,9 @@ router.post('/register',async(req,res)=>{
             message:`${res.statusCode}: ${res.statusMessage} Entry could not be made to DB`,
             
         })
-        throw err
+        
+        req.flash('msg',"Please Try Again")
+        res.redirect('/register')
     })
     req.flash('msg','Registeration Successful!!')
     res.redirect('/login')
@@ -87,26 +96,17 @@ router.post('/register',async(req,res)=>{
 })
 
 router.get('/login',(req,res)=>{
-    res.render('loginPage',{msg:req.flash('error')})
+    res.render('loginPage',{request:req})
 })
 
-router.get('/loginFailure',(req,res)=>{
-    logger.info({
-        level:'info',
-        message:`${req.user}failed to log in`,
-        
-    })
-    res.status(401).render('failures',{
-        layout:'mainLayout',
-        name:false,
-        data:'Invalid Credentials!! Try Again',
-        
-    })
-})
 
 router.post('/login',passport.authenticate('local',
-{failureRedirect:'/loginFailure',successRedirect:'/dashboard'}))
+{failureRedirect:'/loginFailure',successRedirect:'/dashboard',failureFlash:true}))
 
+router.get('/loginFailure',(req,res)=>{
+    req.flash('msg','Invalid Credentials!! Try Again')
+    res.render('loginPage',{request:req})
+})
 
 router.get('/dashboard',async(req,res)=>{
     
@@ -127,7 +127,9 @@ router.get('/dashboard',async(req,res)=>{
                 message:`${res.statusCode}: ${res.statusMessage} Posts not found`,
                 
             })
-            throw err
+            
+            req.flash('msg',"Please Try Again")
+            res.redirect('/dashboard')
         })
         
         if(req.user.is_author){
@@ -135,7 +137,7 @@ router.get('/dashboard',async(req,res)=>{
                 data:post,
                 name:req.user.name,
                 request:req,
-                layout:'layout'
+                
             })
         }
         else{
@@ -143,7 +145,6 @@ router.get('/dashboard',async(req,res)=>{
             res.render('userDashboard',{
                 data : post,
                 name:req.user.name,
-                layout:'layout',
                 request:req
              })
         }
@@ -157,7 +158,8 @@ router.get('/dashboard',async(req,res)=>{
         })
         res.status(401).render('failures',{
             name:false,
-            data:'Unauthorized Access'
+            data:'Unauthorized Access',
+            request:req
         })
     }
 })
@@ -167,8 +169,7 @@ router.get('/createPost',(req,res)=>{
     {
         res.render('createPost',{
             request:req,
-            name:req.user.name,
-            layout:'layout'
+            name:req.user.name
         })
     }
 
@@ -184,7 +185,7 @@ router.get('/createPost',(req,res)=>{
             res.status(401).render('failures',{
                 name:req.user.name,
                 data:'Unauthorized Access',
-                layout:'mainLayout'
+                request:req
             })
         }
         else{
@@ -192,7 +193,7 @@ router.get('/createPost',(req,res)=>{
             res.status(401).render('failures',{
                 name:false,
                 data:'Unauthorized Access',
-                layout:'mainLayout'
+                request:req
             })
         }
         
@@ -215,7 +216,9 @@ router.post('/createPost',async(req,res)=>{
                 message:`${res.statusCode}: ${res.statusMessage} Finding author Failed`,
                 
             })
-            throw err
+            req.flash('msg',"Please Try Again")
+            res.redirect('/createPost')
+            
         })
         
         if(!author){
@@ -232,7 +235,9 @@ router.post('/createPost',async(req,res)=>{
                     message:`${res.statusCode}: ${res.statusMessage} Author not inserted in DB`,
                     
                 })
-                throw err
+                
+                req.flash('msg',"Please Try Again")
+                res.redirect('/createPost')
             })
         }
         
@@ -252,18 +257,17 @@ router.post('/createPost',async(req,res)=>{
                 message:`${res.statusCode}: ${res.statusMessage} Post could not be created`,
                 
             })
-
-            res.status(409).redirect('/createPost')
             
-            throw err
+            req.flash('msg',"Please Try Again")
+            res.status(409).redirect('/createPost')
         })
 
     }
     else{
-        res.status(401).res.status(401).render('failures',{
+        res.status(401).render('failures',{
             name:false,
             data:'Unauthorized Access',
-            layout:'mainLayout'
+            request:req
     })
 }
     logger.info({
@@ -300,23 +304,22 @@ router.get('/post/:id',async(req,res)=>{
             res.status(404).redirect('/')
         }
         
-       
-        throw err
     })
+
     if(req.user)
     {
         res.render('singlePost',{
             singlePost : data,
             name:req.user.name,
-            layout:'layout',
             request:req
-        
+    
        })  
     }
     else{
         res.render('singlePost',{
             singlePost : data,
-            name:false
+            name:false,
+            request:req
         })
     }
 })
@@ -335,13 +338,15 @@ router.get('/dashboard/postDelete/:id',async(req,res)=>{
                 message:`${res.statusCode}: ${res.statusMessage} Post could not be deleted`,
                 
             })
-            throw err
+            req.flash('msg',"Please Try Again")
+            res.status(409).redirect('/dashboard')
+            
         })
     }
     else{
 
         res.status(401).render('failures',{
-            layout:'mainLayout',
+            request:req,
             name:false,
             data:'Unauthorized Access!!'
             
@@ -370,20 +375,22 @@ router.get('/dashboard/postUpdate/:id',async(req,res)=>{
                 message:`${res.statusCode}: ${res.statusMessage} Post could not be found`,
                 
             })
-            throw err
+            
+            req.flash('msg',"Please Try Again")
+            res.status(409).redirect('/dashboard')
         })
         res.render('updatePost',{
             data:result,
             name:req.user.name,
-            layout:'layout',
             request:req
-    })
+            
+        })
         
     }
     else{
 
         res.status(401).render('failures',{
-            layout:'mainLayout',
+            require:req,
             name:false,
             data:'Unauthorized Access!!'
 
@@ -414,13 +421,15 @@ router.post('/dashboard/updatePost/:id',async(req,res)=>{
                 message:`${res.statusCode}: ${res.statusMessage} Post could not be Updated`,
                 
             })
-            throw err
+            req.flash('msg',"Please Try Again")
+            res.status(409).redirect('/dashboard')
+            
         })
     }
     else{
 
         res.status(401).render('failures',{
-            layout:'mainLayout',
+            request:req,
             name:false,
             data:'Unauthorized Access!!'
 
@@ -436,120 +445,7 @@ router.post('/dashboard/updatePost/:id',async(req,res)=>{
     res.redirect('/dashboard')
 })
 
-router.post('/sort',async(req,res)=>{
-
-    const result = await prisma.posts.findMany({
-        include:{
-            author:true
-        },
-        orderBy : {
-            date : req.body.order
-        }
-    })
-    .catch(err=>{
-
-        logger.error({
-            level:'error',
-            message:`sorting failed`,
-            
-        })
-        if(req.user){
-            res.status(409).redirect('/dashboard')
-        }
-        else{
-            res.status(409).redirect('/')
-        }
-        
-        throw err
-    })
-
-    if(req.isAuthenticated() && req.user)
-    {
-       
-        if(req.user.is_author){
-            res.render('adminDashboard',{
-                data:result,
-                name:req.user.name,
-                layout:'layout',
-                request:req
-            })
-        }
-        else{
-            res.render('userDashboard',{
-                data:result,
-                name:req.user.name,
-                layout:'layout',
-                request:req
-            })
-        }
-    }
-    
-    else{
-        res.render('welcomePage',{
-            data : result
-        })
-    }
-})
-
-router.post('/searchByKey',async(req,res)=>{
-    
-    const result = await prisma.posts.findMany({
-        include : {
-            author:true
-        },
-        where : {
-            title : {
-                contains : req.body.searchQueryKey
-            }
-        }
-    })
-    .catch(err=>{
-
-        logger.error({
-            level:'error',
-            message:`search by key failed`,
-            
-        })
-        if(req.user){
-            res.status(409).redirect('/dashboard')
-        }
-        else{
-            res.status(409).redirect('/')
-        }
-        
-        throw err
-    })
-    if(req.isAuthenticated() && req.user)
-    {
-       
-        if(req.user.is_author){
-            res.render('adminDashboard',{
-                data:result,
-                name:req.user.name,
-                layout:'layout',
-                request:req
-            })
-        }
-        else{
-            res.render('userDashboard',{
-                data:result,
-                name:req.user.name,
-                layout:'layout',
-                request:req
-            })
-        }
-    }
-    
-    else{
-        res.render('welcomePage',{
-            data : result
-        })
-    }
-    
-})
-
-router.post('/searchByAuthor',async(req,res)=>{
-    
+router.get('/filters',async(req,res)=>{
     const result = await prisma.posts.findMany({
         include:{
             author:true
@@ -557,59 +453,79 @@ router.post('/searchByAuthor',async(req,res)=>{
         where:{
             author : {
                 author_name:{
-                    contains:req.body.searchQueryAuthor
-                    }
-                }
-            }
-        })
-        .catch(err=>{
+                    contains:req.query.searchQueryAuthor 
+                } || true
+            },
+            title : {
+                contains : req.query.searchQueryKey
+            }  || true ,
+        },
+        orderBy : {
+            date : req.query.order || 'desc'
+        }
+    })
+    .catch(err=>{
 
-            logger.error({
-                level:'error',
-                message:`search by author failed`,
-                
-            })
-            if(req.user){
-                res.status(409).redirect('/dashboard')
-            }
-            else{
-                res.status(409).redirect('/')
-            }
+        logger.error({
+            level:'error',
+            message:`search by author failed`,
             
-            throw err
         })
-        if(req.isAuthenticated() && req.user)
-        {
-           
-            if(req.user.is_author){
-                res.render('adminDashboard',{
-                    data:result,
-                    name:req.user.name,
-                    layout:'layout',
-                    request:req
-                })
-            }
-            else{
-                res.render('userDashboard',{
-                    data:result,
-                    name:req.user.name,
-                    layout:'layout',
-                    request:req
-                })
-            }
+        if(req.user){
+            res.status(409).redirect('/dashboard')
+        }
+        else{
+            res.status(409).redirect('/')
         }
         
+        
+    })
+
+    if(req.isAuthenticated() && req.user)
+    {
+       
+        if(req.user.is_author){
+            res.render('adminDashboard',{
+                data:result,
+                name:req.user.name,
+                request:req
+            })
+            
+        }
         else{
-            res.render('welcomePage',{
-                data : result
+            res.render('userDashboard',{
+                data:result,
+                name:req.user.name,
+                request:req
             })
         }
+    }
+    
+    else{
+        res.render('welcomePage',{
+            data : result,
+            request:req
+        })
+        
+    }
+        
+})
 
+router.get('/all/authors',async(req,res)=>{
+    const result = await prisma.author.findMany({
+        select : {
+            author_name : true
+        }
     })
+    res.json(result)
+})
+
+
 
 router.get('/logout',(req,res)=>{
     req.logOut();
-    res.redirect('/login')
+    req.flash('msg','Successfully Logged Out!!')
+    res.render('loginPage',{request:req})
 })
 }
 catch(err)
@@ -619,8 +535,25 @@ catch(err)
         message:err,
         
     })
-    throw err
 }
 
+router.get('/page',async(req,res)=>{
+    const data = await prisma.posts.findMany({
+        include:{
+            author:true
+        },
+        skip:(req.query.number - 1)*5,
+        take:5
+    })
 
+    res.render('partials/postBody',{
+        data:data,
+        request:req
+    })
+})
+
+router.get('/total/page',async(req,res)=>{
+    const pages = await prisma.posts.count()
+    res.json(Math.ceil(pages/5))
+})
 module.exports = router
