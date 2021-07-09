@@ -6,11 +6,11 @@ function startServer({serverPort = process.env.SERVER_PORT}={}){
 
     try{
         
-        app.listen(serverPort,()=>
+        app.listen(process.env.PORT,'0.0.0.0',()=>
         {
             logger.info({
                 level:'info',
-                message:`Server is being initialized on ${serverPort}`,
+                message:`Server is being initialized on ${process.env.PORT}`,
                 
             })
             console.log(`Server is being Initialized on ${serverPort}!`)
